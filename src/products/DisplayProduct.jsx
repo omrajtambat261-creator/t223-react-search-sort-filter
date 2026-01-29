@@ -9,9 +9,9 @@ export default function DisplayProduct(props) {
   return (
     <div className='row'>
       {products.map(product => {return(
-        <div className='col-3 mb-5'>
+        <div key={product.id} className='col-3 mb-5'>
           <div className="card" style={{width:'18rem'}}>
-            <img src="..." className="card-img-top" alt="..."/>
+            <img src={product.thumbnail} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">Card title</h5>
               <p className='card-text'>{product.category}</p>

@@ -1,22 +1,38 @@
 import React from 'react'
-import useFetch from '../customHooks/useFetch'
+import useFetch from '../customHooks/useFetch';
 
 export default function FilterProducts(props) {
-    let categories = props.categoriesArray
+    
+    let {data:categories}=useFetch("https://dummyjson.com/products/category-list")
+        function handleCategoryChange(e) {
+        const selectedCategory = e.target.value;
+        console.log(selectedCategory);
+        props.filterProductsByCategoryFunction(selectedCategory)
+    }
+
     
   return (
-    <>
-      <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Filter By Categories
-            </button>
-            <ul className="dropdown-menu">
-                <li key={'all'}><a className="dropdown-item" href="#" >All</a></li>
+    <div>
+        {categories===null?"Loading":<div className='w-50'>
+            <select className="form-select" onChange={handleCategoryChange}>
+                <option defaultValue={'all'} >Filter By Category</option>
+                <option value="all" key={'all'}>All</option>
                 {categories.map(category => {return (
-                    <li key={category}><a className="dropdown-item" href="#" >{category}</a></li>
+                    <option value={category} key={category}>{category}</option>
                 )})}
-            </ul>
+            </select>
         </div>
-    </>
+        }
+        
+    </div>
+    //   <div className='w-50'>
+    //         <select className="form-select" aria-label="Default select example">
+    //             <option selected>Filter By Category</option>
+    //             <option value="all">All</option>
+    //             {categories.map(category => {return (
+    //                 <option value="all">{category}</option>
+    //             )})}
+    //         </select>
+    //     </div>
   )
 }

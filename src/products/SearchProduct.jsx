@@ -1,5 +1,6 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+
 
 export default function SearchProduct(props) {
   let {register, handleSubmit, formState}=useForm()
@@ -12,14 +13,16 @@ export default function SearchProduct(props) {
   return (
     <div>
       <form onSubmit={handleSubmit(collectFormData)}>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder='Enter ProducT Name' 
+        <div className='d-flex'>
+          <div className="mb-3 ms-5 pe-2">
+          <input type="text" className="form-control" placeholder='Enter Product Name' 
           {...register('productName', {required:true, message:'username is required'})}
           />
           {formState.errors?.productName?alert('product name is required'):''}
           {/* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> */}
         </div>
-        <input type="submit" class="btn btn-primary"/>
+        <input type="submit" className="btn btn-primary rounded"/>
+        </div>
       </form>
     </div>
   )

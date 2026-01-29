@@ -58,7 +58,7 @@ export default function FetchProducts() {
 
   return (
     <div className='container mt-5'>  
-      <div className="row bg-warning text-center p-3 rounded-5">
+      <div className="row bg-warning text-center d-flex align-items-evenly p-3 rounded-5">
         <div className="col-4">
           <FilterProducts filterProductsByCategoryFunction={filterProductsByCategory} />
         </div>
